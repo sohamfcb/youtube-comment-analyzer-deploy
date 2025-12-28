@@ -13,6 +13,13 @@ import seaborn as sns
 import json
 from mlflow.models import infer_signature
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+MLFLOW_TRACKING_URI = os.getenv("MLFLOW_URL")
+
 # logging configuration
 logger = logging.getLogger('model_evaluation')
 logger.setLevel('DEBUG')
@@ -127,7 +134,7 @@ def save_model_info(run_id: str, model_path: str, file_path: str) -> None:
 
 
 def main():
-    mlflow.set_tracking_uri("http://127.0.0.1:5000/")
+    mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
 
     mlflow.set_experiment('dvc-pipeline-runs')
     

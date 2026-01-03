@@ -82,6 +82,7 @@ def predict_with_timestamps():
         return jsonify({"error": "No comments provided"}), 400
 
     try:
+        expected_columns = model.metadata.get_input_schema().input_names()
         comments = [item['text'] for item in comments_data]
         timestamps = [item['timestamp'] for item in comments_data]
 
@@ -90,9 +91,15 @@ def predict_with_timestamps():
         
         # Transform comments using the vectorizer
         transformed_comments = vectorizer.transform(preprocessed_comments)
+
+        X_df = pd.DataFrame(transformed_comments.toarray(), columns=vectorizer.get_feature_names_out())
+        X_df = X_df.reindex(columns=expected_columns, fill_value=0)
+
+        # Make predictions
+        predictions = model.predict(X_df).tolist()  
         
         # Make predictions
-        predictions = model.predict(transformed_comments).tolist()  # Convert to list
+        # predictions = model.predict(transformed_comments).tolist()  # Convert to list
         
         # Convert predictions to strings for consistency
         predictions = [str(pred) for pred in predictions]

@@ -104,3 +104,4 @@ tfidf_vectorizer.pkl
 mlflow_start.txt
 
 start_server.sh
+push.sh

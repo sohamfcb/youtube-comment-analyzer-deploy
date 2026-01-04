@@ -1,18 +1,21 @@
+# Add parent directory to path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from utils import _configure_mlflow
+
+_configure_mlflow()
+
 import mlflow.pyfunc
 import pytest
 from mlflow.tracking import MlflowClient
 import sys
 import os
 
-# Add parent directory to path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-from utils import _configure_mlflow
 
 # Set your remote tracking URI
 # mlflow.set_tracking_uri("http://ec2-54-196-109-131.compute-1.amazonaws.com:5000/")
 
-_configure_mlflow()
+
 
 @pytest.mark.parametrize("model_name, stage", [
     ("yt_chrome_plugin_model", "Staging"),])

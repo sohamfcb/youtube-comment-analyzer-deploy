@@ -7,6 +7,7 @@ def _configure_mlflow():
     Use DagsHub if creds exist; else fallback to local.
     DagsHub expects username=<dagshub username>, password=<token>.
     """
+    load_dotenv()
     dagshub_username = os.getenv("DAGSHUB_USERNAME", "sohamfcb")  # <-- your username
     dagshub_token = os.getenv("DAGSHUB_PAT")
 

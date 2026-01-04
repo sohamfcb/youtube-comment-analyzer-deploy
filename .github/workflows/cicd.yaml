@@ -131,7 +131,6 @@ jobs:
             sleep 2
           done
           echo "Flask failed to start"
-          cat flask.log
           exit 1
 
 

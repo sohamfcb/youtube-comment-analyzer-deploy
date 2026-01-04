@@ -1,4 +1,3 @@
-import mlflow
 import pytest
 import pandas as pd
 import pickle
@@ -10,6 +9,10 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from utils import _configure_mlflow
+_configure_mlflow()
+
+import mlflow
+
 
 # Set your remote tracking URI
 # mlflow.set_tracking_uri("http://ec2-54-196-109-131.compute-1.amazonaws.com:5000/")

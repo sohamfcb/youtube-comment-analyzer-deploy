@@ -117,7 +117,22 @@ jobs:
           DAGSHUB_USERNAME: sohamfcb
           DAGSHUB_PAT: ${{ secrets.DAGSHUB_PAT }}
         run: |
-          nohup python flask_app/app.py &
+          python flask_app/app.py > flask.log 2>&1 &
+
+      - name: Wait for Flask to be ready
+        run: |
+          for i in {1..30}; do
+            if curl -s http://localhost:5000/health > /dev/null; then
+              echo "Flask is up!"
+              exit 0
+            fi
+            echo "Waiting for Flask..."
+            sleep 2
+          done
+          echo "Flask failed to start"
+          cat flask.log
+          exit 1
+
 
       - name: Run Flask API tests
         run: |

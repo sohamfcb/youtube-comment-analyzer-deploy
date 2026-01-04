@@ -162,7 +162,7 @@ def main():
     # mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
     _configure_mlflow()
 
-    mlflow.set_experiment('dvc-pipeline-runs')
+    mlflow.set_experiment('dvc-pipeline-runs2')
     
     with mlflow.start_run() as run:
         try:

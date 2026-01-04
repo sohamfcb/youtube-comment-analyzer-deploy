@@ -106,3 +106,4 @@ mlflow_start.txt
 start_server.sh
 push.sh
 yt-chrome-plugin-frontend/
+.pytest_cache/

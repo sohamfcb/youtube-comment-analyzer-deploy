@@ -110,3 +110,15 @@ jobs:
           DAGSHUB_USERNAME: sohamfcb
           DAGSHUB_PAT: ${{ secrets.DAGSHUB_PAT }}
         run: python scripts/promote_model.py
+
+      - name: Start Flask app
+        env:
+          MLFLOW_URL: ${{ secrets.MLFLOW_URL }}
+          DAGSHUB_USERNAME: sohamfcb
+          DAGSHUB_PAT: ${{ secrets.DAGSHUB_PAT }}
+        run: |
+          nohup python flask_app/app.py &
+
+      - name: Run Flask API tests
+        run: |
+          pytest scripts/test_flask_api.py

@@ -23,6 +23,7 @@ def _configure_mlflow():
         os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_username   # <-- username
         os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token      # <-- token
         mlflow.set_tracking_uri(dagshub_uri)
+        mlflow.set_registry_uri(dagshub_uri)
     else:
         local_uri = "file:./mlruns"
         mlflow.set_tracking_uri(local_uri)

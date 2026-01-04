@@ -15,7 +15,7 @@ from utils import _configure_mlflow
 _configure_mlflow()
 
 @pytest.mark.parametrize("model_name, stage", [
-    ("yt_chrome_plugin_model", "staging"),])
+    ("yt_chrome_plugin_model", "Staging"),])
 def test_load_latest_staging_model(model_name, stage):
     client = MlflowClient()
     

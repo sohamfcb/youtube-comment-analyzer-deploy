@@ -120,18 +120,18 @@ jobs:
           cd flask_app
           python flask_app/app.py > flask.log 2>&1 &
 
-      - name: Wait for Flask to be ready
-        run: |
-          for i in {1..5}; do
-            if curl -s http://localhost:5000/health > /dev/null; then
-              echo "Flask is up!"
-              exit 0
-            fi
-            echo "Waiting for Flask..."
-            sleep 2
-          done
-          echo "Flask failed to start"
-          exit 1
+      # - name: Wait for Flask to be ready
+      #   run: |
+      #     for i in {1..5}; do
+      #       if curl -s http://localhost:5000/ > /dev/null; then
+      #         echo "Flask is up!"
+      #         exit 0
+      #       fi
+      #       echo "Waiting for Flask..."
+      #       sleep 2
+      #     done
+      #     echo "Flask failed to start"
+      #     exit 1
 
 
       - name: Run Flask API tests

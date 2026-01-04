@@ -117,6 +117,7 @@ jobs:
           DAGSHUB_USERNAME: sohamfcb
           DAGSHUB_PAT: ${{ secrets.DAGSHUB_PAT }}
         run: |
+          cd flask_app
           python flask_app/app.py > flask.log 2>&1 &
 
       - name: Wait for Flask to be ready

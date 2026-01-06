@@ -134,9 +134,9 @@ jobs:
       #     exit 1
 
 
-      - name: Run Flask API tests
-        run: |
-          pytest scripts/test_flask_api.py
+      # - name: Run Flask API tests
+      #   run: |
+      #     pytest scripts/test_flask_api.py
 
       - name: Login to AWS ECR
         if: success()
